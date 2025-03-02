@@ -1,0 +1,647 @@
+/*------------------------------------------------------------------------------DEFAULTS
+*/
+
+:root {
+
+/* Background colours: Pallatte eyedroppered from Anki nightmode */
+--background-colour-DarkestGrey: #252525; /* Cutout colour */
+--background-colour-DarkGrey: #2c2c2c; /* Main background colour */
+--background-colour-MidGrey: #4c4a48; /* Only used on the active window topbar */
+--background-colour-LightGrey: #404040; /* Main standout colour */
+--background-colour-LightestGrey: #454545; /* Scrollbars only really */
+--cloudy-grey-overlay: rgba(255, 255, 255, 0.5);
+--active-selector: img:active;
+
+/* 4Chan /fit/ pallate */
+--fit-text-normal: #111111;
+--fit-text-lightblue: #414167;
+--fit-text-darkblue: #0f0c5d;
+--fit-text-red: #dc1315;
+--fit-text-green: #117743;
+--fit-background: #eef2ff;
+--fit-cards: #d6daf0;
+
+/* 4Chan classic pallate */
+--4chan-green: #789922; /* RGB value is (120,153,34) */
+--4chan-red: #972622;
+--4chan-background: #ffffee;
+--4chan-cards: #f0e0d6;
+--4chan-darkred: #40201e;
+--4chan-brightred: #cc1105;
+--4chan-namegreen: #127744;
+
+/* My colours */
+--heading-colour: #5EB3B3;
+
+
+/* Default text values */
+--huge-heading-text-size: 26px; 
+--big-heading-text-size: 22px;
+--med-heading-text-size: 20px;
+
+--normal-body-text-size: 16;
+--small-body-text-size: 12;
+--tiny-body-text-size: 8;
+
+--padding: 10px;
+--font: 'Arial';
+--body-text-colour: #ffffff;
+--line-height: 1.5;
+--size-buff: 120%;
+--size-nerf: 90%;
+
+/* Container variables shall not vary */
+--corner-radius: 0.5em;
+--border: 1px solid transparent;
+--spacer: 2px;
+--box-width: 69%;
+
+
+/* Single light-source universal shadow styling */
+--one-lightbulb-shadow: 2px 2px 0px black; 
+
+
+/* Image occlusion enhanced field defaults */
+--upper-level-position: absolute;
+--lower-level-position: relative;
+--default-width: 100%;
+--default-top: 0;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  padding: var(--padding);
+  font-family: var(--font);
+  font-size: var(--normal-body-text-size);
+  font-weight: 400;
+  line-height: var(--line-height);
+  margin: 0;
+  height: 100%;
+}
+
+.card {
+  background-color: var(--fit-background);
+  color: var(--fit-text-normal);
+  width: var(--box-width);
+  position: relative; /* Establishes a positioning context */
+  border-radius: var(--corner-radius);
+  line-break: loose;
+  padding: var(--padding);
+}
+
+.card .nightMode  {
+  color: var(--body-text-colour);
+  background-color: var(--background-colour-DarkGrey);
+}
+
+.mobile .card {
+  width: 95vw;
+}
+
+/* 
+----------------------------------------------------------------IMAGE MODS
+*/
+
+img {
+  max-width: --var(box-width);
+  min-width: 40vw;
+  object-fit: contain;
+  display: block;
+}
+
+/* Click to zoom disabled by adding $*/
+.win img:active,
+.mac img:active {
+  border: 1px solid var(--link-fg-active);
+  cursor: zoom-out;
+  filter: none;
+  left: 0;
+  height:999%;
+  width: 999%;
+  max-width: 90vw; /* Set max width to 90% of viewport width */
+  max-height: 90vh; /* Set max height to 90% of viewport height */
+  object-fit: contain;
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+  z-index: 100;
+}
+
+.microimg {
+  max-height: 5vw;
+  max-width: 5vw;
+  object-fit: contain;
+  justify-content: left;
+}
+
+
+/* 
+----------------------------------------------------------------CHARACTER MODS
+*/
+
+/* COLOR ACCENTS FOR BOLD-ITALICS-UNDERLINE */
+b { /* BOLD STYLE */
+  color: #7a7a7b; /* #cf2c70 */
+  font-size: var(--size-buff);
+}
+
+u { /* UNDERLINE STYLE */
+  color: #7a7a7b; /* #028061; */
+  font-size: var(--size-buff);
+} 
+
+i  { /* ITALICS STYLE */
+  color: #7a7a7b; /* #e08f0b; */
+  font-size: var(--size-buff);
+}
+
+a { /* LINK STYLE */
+  color: #5EB3B3 !important;
+  text-decoration: none;
+  font-size: var(--size-buff);
+  font-style: normal;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;    
+}
+
+strike,
+s { /* STRIKETHROUGH STYLING */
+  font-size: var(--size-nerf);
+  color: #767676;
+  text-decoration: none;
+  padding: 5px;
+}
+
+#hidden {
+ color: green;
+}
+
+/*-------------------------------------------------------------------CLOZE TOMFOOLERY
+*/
+
+
+/* Style for text wrapped in cloze markers */
+.cloze {
+  color: var(--4chan-green); /* Set the text color to green */
+  font-size: var(--size-buff);
+}
+
+
+/*-------------------------------------------------------------------HEADING CLASSES
+*/
+
+/* Nonpulsating horizontal version of background text */
+.background {
+  position: absolute;
+  white-space: nowrap; /* Prevent text wrapping */
+  top: 0;
+  left: 100%; /* Position to the right of .card */
+  writing-mode: vertical-rl;
+  height: 100vh; /* Adjust as needed */
+  width: auto; /* Adjust as needed */
+  z-index: 2; /* To ensure it's above the .card */
+
+  font-size: var(--huge-heading-text-size); 
+  line-height: var(--line-height);
+  color: var(--background-colour-DarkGrey);
+  text-shadow: var(--one-lightbulb-shadow);
+}
+
+/* Originally to be flashing TEXT SHADOW DISABLED */
+.heading {
+  font-weight: bold;
+  color: var(--fit-text-lightblue); 
+  font-size: var(--big-heading-text-size); /* Adjust the fallback size as needed */
+  font-variant: small-caps;
+  z-index: 3;
+}
+
+.nightMode .heading {
+  color: var(--heading-colour);
+}
+
+/* Heading that stays stuck to the top as the viewer scrolls down to the answer */
+.heading2 {
+  font-size: var(--big-heading-text-size);
+  z-index: 2;
+
+  position: sticky; 
+  top: -10px;
+  margin: -10px -10px 5px -10px;
+  padding: 10px 10px 5px 10px;
+  background: var(--fit-cards);
+  border: var(--border);
+  border-radius: var(--corner-radius);
+  will-change: transform;
+  box-shadow: 0px 10px 10px -5px var(--fit-cards);  /* Box-shadow for feathered bottom edge */
+}
+
+.nightMode .heading2 {
+  background: var(--background-colour-LightGrey);
+  box-shadow: 0px 10px 10px -5px var(--background-colour-LightGrey);
+}
+
+.heading3 { /* Same as heading2 but no background */
+  font-size: var(--big-heading-text-size);  
+}
+
+.subheading {
+  font-size: var(--med-heading-text-size);
+  text-align: left;
+}
+
+.blur-overlay {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--cloudy-grey-overlay);
+  backdrop-filter: blur(10px); /* Gaussian blur effect */
+}
+
+.redacted {
+  filter:blur(5px); 
+  pointer-events: none;
+}
+
+.hover {
+}
+.hover:hover {
+ text-decoration: underline;
+ cursor: pointer;   
+}
+
+
+
+
+
+
+
+
+
+/*----------------------------------------------------------------------------------------TEXT BOX CLASSES
+*/
+
+.text-box {
+  background-color: var(--fit-cards);
+  border: var(--border);
+  border-radius: var(--corner-radius);
+  margin-top: var(--spacer);
+  padding: var(--padding);
+  position: relative;
+}
+
+.nightMode .text-box {
+ background-color: var(--background-colour-LightGrey);
+}
+
+.extra, {
+ color: var(--fit-text-darkblue);
+ font-size: var(--small-body-text-size);
+}
+
+.nightMode .extra{
+ color: var(--background-colour-DarkGrey);
+ font-size: var(--small-body-text-size);
+}
+
+.extra:empty{
+ display: none;
+}
+
+.ref {
+ color: var(--fit-text-darkblue);
+ font-size: var(--size-nerf);
+ text-shadow:
+ -1px -1px 0 var(--fit-cards),
+ 0   -1px 0 var(--fit-cards),
+ 1px -1px 0 var(--fit-cards),
+ 1px  0   0 var(--fit-cards),
+ 1px  1px 0 var(--fit-cards),
+ 0    1px 0 var(--fit-cards),
+ -1px  1px 0 var(--fit-cards),
+ -1px  0   0 var(--fit-cards);
+}
+
+.nightMode .ref {
+ color: var(--background-colour-DarkGrey);
+ text-shadow:
+ -1px -1px 0 var(--background-colour-LightGrey),
+ 0   -1px 0 var(--background-colour-LightGrey),
+ 1px -1px 0 var(--background-colour-LightGrey),
+ 1px  0   0 var(--background-colour-LightGrey),
+ 1px  1px 0 var(--background-colour-LightGrey),
+ 0    1px 0 var(--background-colour-LightGrey),
+ -1px  1px 0 var(--background-colour-LightGrey),
+ -1px  0   0 var(--background-colour-LightGrey);
+}
+
+.ref:empty {
+ display: none;
+}
+
+.fuzzbox {
+ text-align: center; 
+ width: 90vw; 
+ position: absolute; 
+ top: 50%; 
+ left: 50%; 
+ transform: 
+ translate(-50%, -50%); 
+ text-shadow: -1px 0 #2c2c2c, 0 1px #2c2c2c, 1px 0 #2c2c2c, 0 -1px #2c2c2c;">
+}
+
+.flexbox {
+  display: flex;
+}
+
+.mobile .flexbox {
+  display: block; /* Change to block for mobile */
+}
+
+.flex-child {
+  flex: 3 1; /* Adjust flex property */
+}
+
+.flex-child img {
+  height: auto;
+}
+
+.mobile .flex-child {
+  flex: 3 1;
+}
+
+.notepad {
+  color: var(--4chan-green);
+  font-size: var(--small-body-text-size);
+  flex: 2 1;
+  text-align: left;
+  overflow: auto; /* or overflow: scroll; */
+}
+
+.strike-that{
+  font-size: var(--size-nerf);
+  color: #767676;
+  text-decoration: none;
+  padding: 5px;
+}
+
+/*----------------------------------------------------------------------------------------CLICKABLE TAGS 
+*/
+.prettify-tags {
+  font-family: var(--font);
+  display: flex;
+  flex-flow: row wrap;
+  font-size: var(--small-body-text-size);
+  margin-top: var(--spacer);
+}
+.mobile .prettify-tags {
+  margin: 1em;
+}
+
+.prettify-tag {
+  all: initial;
+  border-radius: 0.25em;
+  display: inline;
+  margin: 0 0.5em 0.5em 0;
+  padding: 0.25em;
+  transition: all 0.25s;
+  word-break: break-word;
+  border: 1px solid var(--fit-text-darkblue);
+  font-family: var(--font);
+  color: var(--fit-text-darkblue);
+}
+
+.nightMode .prettify-tag {
+  all: initial;
+  border-radius: 0.25em;
+  display: inline;
+  margin: 0 0.5em 0.5em 0;
+  padding: 0.25em;
+  transition: all 0.25s;
+  word-break: break-word;
+  border: 1px solid var(--background-colour-DarkGrey);
+  font-family: var(--font);
+  color: var(--background-colour-DarkGrey);
+}
+
+.prettify-tag:hover {
+  border: 1px solid transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+
+.heading-tags {
+ font-weight: bold;
+ font-family: var(--font);
+ color: var(--background-colour-LightGrey); 
+ font-size: var(--small-body-text-size);
+ word-break: break-word; 
+}
+
+.heading-tag {
+ all: initial;
+ font-family: var(--font);
+ display: inline;
+ font-weight: bold;
+ color: var(--background-colour-LightGrey); 
+ font-size: var(--small-body-text-size);
+ word-break: break-word;
+}
+.heading-tag:hover {
+ color: #ffffff;
+ cursor: pointer;
+}
+
+
+/*----------------------------------------------------------------------------------------ABBREVIATIONS FIX FOR MOBILE
+*/
+abbr[title]:after
+{
+ content: " (" attr(title) ")";
+ }
+
+ @media screen and (min-width: 1025px)
+ {
+   abbr[title]
+   {
+    cursor:help;
+  }
+
+  abbr[title]:after
+  {
+    content: "";
+  }
+}
+
+
+
+
+
+
+
+
+/*-------------------------------------------------- STOLEN CODE TO PLAY WITH 
+
+/* Prettify cardstyling */
+.prettify-flashcard {
+  background-color: var(--card-bg);
+  border-radius: 0.5em;
+  border: 1px solid var(--card-border);
+  box-shadow: var(--card-box-shadow) 0px 4px 6px;
+  color: var(--text-fg);
+  font-family: var(--font-family);
+  font-size: var(--font-size-regular);
+  line-height: 1.5;
+  margin: 0 auto;
+  max-width: var(--card-max-width);
+  text-align: var(--card-text-align);
+  word-wrap: break-word;
+}
+
+.prettify-flashcard ::selection {
+  background-color: var(--text-bg-selected);
+}
+
+$.card {
+  /* Light theme */
+  background-color: #2c2c2c;
+  --text-fg: #434c5e;
+  --text-fg-faint: #4c566a;
+  --text-bg-selected: #eceff4;
+  --card-bg: #3d3d3d;
+  --card-border: transparent;
+  --divider: #d8dee9;
+  --tag-fg: #4c566a;
+  --tag-bg: transparent;
+  --tag-fg-active: #8fbcbb;
+  --tag-bg-active: transparent;
+  --tag-border: #d8dee9;
+  --tag-border-active: #8fbcbb;
+  --cloze-fg: #8FBCBB;
+  --cloze-bg: transparent;
+  --link-fg: #81a1c1;
+  --link-bg: transparent;
+  --link-fg-active: #8fbcbb;
+  --link-bg-active: #eceff4;
+  --bold-fg: #bf616a;
+  --italic-fg: #ebcb8b;
+  --bold-italic-fg: #d08770;
+  --underline-fg: #a3be8c;
+}
+
+$.card.night-mode {
+  /* Dark theme */
+  background-color: #2c2c2c;
+  --text-fg: #e7e9f0;
+  --text-fg-faint: #d8dee9;
+  --text-bg-selected: #3b4252;
+  --card-bg: #3d3d3d;
+  --card-border: transparent;
+  --divider: #d8dee9;
+  --tag-fg: #d8dee9;
+  --tag-bg: transparent;
+  --tag-fg-active: #8fbcbb;
+  --tag-bg-active: transparent;
+  --tag-border: #4c566a;
+  --tag-border-active: #8fbcbb;
+  --cloze-fg: #8fbcbb;
+  --cloze-bg: transparent;
+  --link-fg: #81a1c1;
+  --link-bg: transparent;
+  --link-fg-active: #8fbcbb;
+  --link-bg-active: #434c5e;
+  --bold-fg: #bf616a;
+  --italic-fg: #ebcb8b;
+  --bold-italic-fg: #d08770;
+  --underline-fg: #a3be8c;
+}
+
+*/
+
+
+/* 
+▓▓▓▓▓▓▓▓▓▓SPECIAL EFFECTS BIT▓▓▓▓▓▓▓▓▓▓ 
+*/
+
+/* Pulsating effect with shadow*/
+.pulsating-text-shadow {
+  animation: pulseTextAndShadow 2.75s infinite ease-in-out;
+}
+
+.pulsating-text-shadow .nightMode {
+  animation: pulseTextAndShadow 2.75s infinite ease-in-out;
+}
+
+
+/* Pulsating animation for text and shadow */
+@keyframes pulseTextAndShadow {
+  0% {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  }
+  50% {
+    text-shadow: var(--one-lightbulb-shadow); /* Larger shadow properties */
+  }
+  100% {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1); /* Return to initial shadow properties */
+  }
+}
+
+/* NightMode Version of animation*/
+@keyframes pulseTextAndShadowNM {
+  0% {
+    text-shadow: 0px 0px 0px transparent;
+  }
+  50% {
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 1); /* Larger shadow properties */
+  }
+  100% {
+    text-shadow: 0px 0px 0px transparent; /* Return to initial shadow properties */
+  }
+}
+
+/* Following the cursor animation*/ 
+.text-follow-cursor {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease; /* Add smooth transition for movement */
+}
+
+.text-follow-cursor:hover {
+  transform: translate(-50%, -50%) scale(1.1); /* Adjust the scale to control the bump effect */
+}
+
+
+/* Pinched the Neon2 button css from Advanced Review and Bottom Bar addon*/ 
+#Neon2 {
+  padding: 5px 20px;
+  border: 1px solid #20A11C;
+  border-radius: 5px;
+  background: #20A11C;
+  transition: 0.5s;
+  color: black;
+  text-shadow: none;
+  box-shadow: 0 2px 10px 0;
+}
+
+#Neon2:hover {
+  background: none;
+  border-radius: 5px;
+  color: #33FF2D;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+
+*/ Add more using excel: ="{{#c"&B1&"}}" in the A column, numbers in the B column, ="{{/c"&B1&"}}" in the C column. Drag all 3 down as far as you need. Copy and paste, it'll be text not the formula. */
+
