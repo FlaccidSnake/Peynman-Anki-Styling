@@ -108,6 +108,7 @@ img {
   min-width: 40vw;
   object-fit: contain;
   display: block;
+  margin:auto;
 }
 
 /* Click to zoom disabled by adding $*/
