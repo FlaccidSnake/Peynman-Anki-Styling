@@ -112,7 +112,7 @@ Here you'll find the example <b>html</b> for the front and back templates of my 
 
 <script src="_randomisedlists.js" id="back"></script>
 ```
-# Peynman Retardmaxxing note-type back template
+# Peynman Retardmaxxing note-type front template
 ```html
 <section class="text-box">
 
