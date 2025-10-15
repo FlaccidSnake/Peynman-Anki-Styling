@@ -1,6 +1,6 @@
 Here you'll find the example <b>html</b> for the front and back templates of my most-used note-type.
 
-# Front Template
+# Peynman QnA note-type front template
 ```html
 <section class="text-box">
 
@@ -31,7 +31,7 @@ Here you'll find the example <b>html</b> for the front and back templates of my 
 
 <script src="_clickabletags.js"></script>
 ```
-# Back Template
+# Peynman QnA note-type back template
 ```html
 <section class="text-box">
 
@@ -61,4 +61,98 @@ Here you'll find the example <b>html</b> for the front and back templates of my 
 </section>
 
 <script src="_clickabletags.js"></script>
+```
+# Peynman Cloze Pathology note-type front template
+```html
+<section class="text-box">
+
+  <header class="heading2">
+    <div class="heading">
+      <span>Pathophysiology</span>
+      {{#[stickynote]}}<span>🗐</span>{{/[stickynote]}}
+    </div>
+    <div class=PBL>Your patient has <span style=font-weight:bold>{{Clinical}}</span>.</div>
+  </header>
+
+  <main>
+    {{edit:cloze:PATHOPHYSIOLOGY}}
+    <div class="cit">{{Citation}}</div>
+  </main>
+
+  <footer class="extra redacted">
+    {{#Context}}<hr>{{Context}}{{/Context}}
+  </footer>
+
+</section>
+
+<script src="_randomisedlists.js"></script>
+```
+# Peynman Cloze Pathology note-type back template
+```html
+<section class="text-box">
+
+  <header class="heading2">
+    <div class="heading">
+      <span>Pathophysiology</span>
+      {{#[stickynote]}}<span>🗐</span>{{/[stickynote]}}
+    </div>
+    <div class=PBL>Your patient has <span style=font-weight:bold>{{Clinical}}</span>.</div>
+  </header>
+
+  <main>
+    {{edit:cloze:PATHOPHYSIOLOGY}}
+    <div class="cit">{{Citation}}</div>
+  </main>
+
+  <footer class="extra">
+    {{#Context}}<hr>{{Context}}{{/Context}}
+  </footer>
+
+</section>
+
+<script src="_randomisedlists.js" id="back"></script>
+```
+# Peynman Retardmaxxing note-type back template
+```html
+<section class="text-box">
+
+  <header class="heading2">
+    <div class="sourceheading">{{Tags}}</div>
+    <div>{{edit:Question}}</div>
+  </header>
+
+  <main class="redacted">
+    {{Answer}}
+  </main>
+
+  <footer class="extra redacted">
+    {{#Context}}<hr>{{Context}}{{/Context}}
+  </footer>
+
+</section>
+
+<script src="_randomisedlists.js"></script>
+<script src="_tagtitle.js"></script>
+```
+# Peynman Retardmaxxing note-type back template
+```html
+<section class="text-box">
+
+  <header class="heading2">
+    <div class="sourceheading">{{Tags}}</div>
+    <div>{{edit:Question}}</div>
+  </header>
+
+  <main>
+    {{Answer}}
+  </main>
+
+  <footer class="extra">
+    {{#Context}}<hr>{{Context}}{{/Context}}
+  </footer>
+
+</section>
+
+<script src="_randomisedlists.js"></script>
+<script src="_tagtitle.js"></script>
 ```
