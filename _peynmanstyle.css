@@ -1,73 +1,62 @@
-/*------------------------------------------------------------------------------DEFAULTS
+/*------------------------------------------------------------------------------
+  DEFAULTS
 */
 
 :root {
+  /* Background colours: Palette eyedroppered from Anki nightmode */
+  --background-colour-DarkestGrey: #252525; /* Cutout colour */
+  --background-colour-DarkGrey: #2c2c2c; /* Main background colour */
+  --background-colour-MidGrey: #4c4a48; /* Only used on the active window topbar */
+  --background-colour-LightGrey: #404040; /* Main standout colour */
+  --background-colour-LightestGrey: #454545; /* Scrollbars only really */
+  --cloudy-grey-overlay: rgba(255, 255, 255, 0.5);
 
-/* Background colours: Pallatte eyedroppered from Anki nightmode */
---background-colour-DarkestGrey: #252525; /* Cutout colour */
---background-colour-DarkGrey: #2c2c2c; /* Main background colour */
---background-colour-MidGrey: #4c4a48; /* Only used on the active window topbar */
---background-colour-LightGrey: #404040; /* Main standout colour */
---background-colour-LightestGrey: #454545; /* Scrollbars only really */
---cloudy-grey-overlay: rgba(255, 255, 255, 0.5);
---active-selector: img:active;
+  /* 4Chan /fit/ palette */
+  --fit-text-normal: #111111;
+  --fit-text-lightblue: #414167;
+  --fit-text-darkblue: #0f0c5d;
+  --fit-text-red: #dc1315;
+  --fit-text-green: #117743;
+  --fit-background: #eef2ff;
+  --fit-cards: #d6daf0;
 
-/* 4Chan /fit/ pallate */
---fit-text-normal: #111111;
---fit-text-lightblue: #414167;
---fit-text-darkblue: #0f0c5d;
---fit-text-red: #dc1315;
---fit-text-green: #117743;
---fit-background: #eef2ff;
---fit-cards: #d6daf0;
+  /* 4Chan classic palette */
+  --4chan-green: #789922; /* RGB value is (120,153,34) */
+  --4chan-red: #972622;
+  --4chan-background: #ffffee;
+  --4chan-cards: #f0e0d6;
+  --4chan-darkred: #40201e;
+  --4chan-brightred: #cc1105;
+  --4chan-namegreen: #127744;
 
-/* 4Chan classic pallate */
---4chan-green: #789922; /* RGB value is (120,153,34) */
---4chan-red: #972622;
---4chan-background: #ffffee;
---4chan-cards: #f0e0d6;
---4chan-darkred: #40201e;
---4chan-brightred: #cc1105;
---4chan-namegreen: #127744;
+  /* My colours */
+  --heading-colour: #5EB3B3;
+  --mini-grey: #767676;
+  --grey-out: #7a7a7b;
 
-/* My colours */
---heading-colour: #5EB3B3;
---mini-grey: #767676;
---grey-out: #7a7a7b;
+  /* Default text values */
+  --huge-heading-text-size: 26px; 
+  --big-heading-text-size: 22px;
+  --med-heading-text-size: 20px;
+  --normal-body-text-size: 16px;
+  --small-body-text-size: 12px;
+  --tiny-body-text-size: 8px;
 
+  --padding: 10px;
+  --font: 'Arial';
+  --body-text-colour: #ffffff;
+  --line-height: 1.5;
+  --size-buff: 120%;
+  --size-nerf: 90%;
 
-/* Default text values */
---huge-heading-text-size: 26px; 
---big-heading-text-size: 22px;
---med-heading-text-size: 20px;
+  /* Container variables */
+  --corner-radius: 0.5em;
+  --border: 1px solid transparent;
+  --spacer: 2px;
+  --box-width: 69%;
 
---normal-body-text-size: 16;
---small-body-text-size: 12;
---tiny-body-text-size: 8;
-
---padding: 10px;
---font: 'Arial';
---body-text-colour: #ffffff;
---line-height: 1.5;
---size-buff: 120%;
---size-nerf: 90%;
-
-/* Container variables shall not vary */
---corner-radius: 0.5em;
---border: 1px solid transparent;
---spacer: 2px;
---box-width: 69%;
-
-
-/* Single light-source universal shadow styling */
---one-lightbulb-shadow: 2px 2px 0px black; 
-
-
-/* Image occlusion enhanced field defaults */
---upper-level-position: absolute;
---lower-level-position: relative;
---default-width: 100%;
---default-top: 0;
+  /* Single light-source universal shadow styling */
+  --one-lightbulb-shadow: 2px 2px 0px black; 
 }
 
 html {
@@ -86,13 +75,13 @@ html {
   background-color: var(--fit-background);
   color: var(--fit-text-normal);
   width: var(--box-width);
-  position: relative; /* Establishes a positioning context */
+  position: relative;
   border-radius: var(--corner-radius);
   line-break: loose;
   padding: var(--padding);
 }
 
-.card .nightMode  {
+.card .nightMode {
   color: var(--body-text-colour);
   background-color: var(--background-colour-DarkGrey);
 }
@@ -101,29 +90,29 @@ html {
   width: 95vw;
 }
 
-/* 
-----------------------------------------------------------------IMAGE MODS
+/*------------------------------------------------------------------------------
+  IMAGE MODS
 */
 
 img {
-  max-width: --var(box-width);
+  max-width: var(--box-width);
   min-width: 40vw;
   object-fit: contain;
   display: block;
-  margin:auto;
+  margin: auto;
 }
 
-/* Click to zoom disabled by adding $*/
+/* Click to zoom */
 .win img:active,
 .mac img:active {
-  border: 1px solid var(--link-fg-active);
+  border: 1px solid var(--heading-colour);
   cursor: zoom-out;
   filter: none;
   left: 0;
-  height:999%;
+  height: 999%;
   width: 999%;
-  max-width: 90vw; /* Set max width to 90% of viewport width */
-  max-height: 90vh; /* Set max height to 90% of viewport height */
+  max-width: 90vw;
+  max-height: 90vh;
   object-fit: contain;
   opacity: 1;
   position: fixed;
@@ -139,28 +128,30 @@ img {
   justify-content: left;
 }
 
-
-/* 
-----------------------------------------------------------------CHARACTER MODS
+/*------------------------------------------------------------------------------
+  CHARACTER MODS
 */
 
-/* COLOR ACCENTS FOR BOLD-ITALICS-UNDERLINE */
-b { /* BOLD STYLE */
-  color: #cf2c70; /* #7a7a7b */
+/* Bold style */
+b {
+  color: #cf2c70;
   font-size: var(--size-buff);
 }
 
-u { /* UNDERLINE STYLE */
-  color: #028061; /* #7a7a7b; */
+/* Underline style */
+u {
+  color: #028061;
   font-size: var(--size-buff);
 } 
 
-i { /* ITALICS STYLE */
-  color: #e08f0b; /* #7a7a7b; */
+/* Italics style */
+i {
+  color: #e08f0b;
   font-size: var(--size-buff);
 }
 
-a { /* LINK STYLE */
+/* Link style */
+a {
   color: #5EB3B3 !important;
   text-decoration: none;
   font-size: var(--size-buff);
@@ -172,50 +163,43 @@ a:hover {
   cursor: pointer;    
 }
 
+/* Strikethrough styling */
 strike,
-s { /* STRIKETHROUGH STYLING */
+s {
   font-size: var(--size-nerf);
   color: var(--mini-grey);
   text-decoration: none;
   padding: 5px;
 }
 
-#hidden {
- color: green;
-}
-
-/*-------------------------------------------------------------------CLOZE TOMFOOLERY
+/*------------------------------------------------------------------------------
+  CLOZE STYLING
 */
 
-
-/* Style for text wrapped in cloze markers */
 .cloze {
-  color: var(--4chan-green); /* Set the text color to green */
+  color: var(--4chan-green);
   font-size: var(--size-buff);
 }
 
-
-/*-------------------------------------------------------------------HEADING CLASSES
+/*------------------------------------------------------------------------------
+  HEADING CLASSES
 */
 
-/* Nonpulsating horizontal version of background text */
 .background {
   position: absolute;
-  white-space: nowrap; /* Prevent text wrapping */
+  white-space: nowrap;
   top: 0;
-  left: 100%; /* Position to the right of .card */
+  left: 100%;
   writing-mode: vertical-rl;
-  height: 100vh; /* Adjust as needed */
-  width: auto; /* Adjust as needed */
-  z-index: 2; /* To ensure it's above the .card */
-
+  height: 100vh;
+  width: auto;
+  z-index: 2;
   font-size: var(--huge-heading-text-size); 
   line-height: var(--line-height);
   color: var(--background-colour-DarkGrey);
   text-shadow: var(--one-lightbulb-shadow);
 }
 
-/* Originally to be flashing TEXT SHADOW DISABLED */
 .heading,
 .sourceheading {
   font-weight: bold;
@@ -232,11 +216,10 @@ s { /* STRIKETHROUGH STYLING */
   color: var(--heading-colour);
 }
 
-/* Heading that stays stuck to the top as the viewer scrolls down to the answer */
-.heading2 {
+/* Sticky heading */
+.heading2 { /* Note that this style has _boldquestions.js targeting it; any question words (e.g. "why", "what", "how", etc.) will become bold. */
   font-size: var(--big-heading-text-size);
   z-index: 2;
-
   position: sticky; 
   top: -10px;
   margin: 0px -10px 5px -10px;
@@ -245,7 +228,7 @@ s { /* STRIKETHROUGH STYLING */
   border: var(--border);
   border-radius: var(--corner-radius);
   will-change: transform;
-  box-shadow: 0px 10px 10px -5px var(--fit-cards);  /* Box-shadow for feathered bottom edge */
+  box-shadow: 0px 10px 10px -5px var(--fit-cards);
 }
 
 .nightMode .heading2 {
@@ -253,7 +236,7 @@ s { /* STRIKETHROUGH STYLING */
   box-shadow: 0px 10px 10px -5px var(--background-colour-LightGrey);
 }
 
-.heading3 { /* Same as heading2 but no background */
+.heading3 {
   font-size: var(--big-heading-text-size);  
 }
 
@@ -270,30 +253,21 @@ s { /* STRIKETHROUGH STYLING */
   width: 100%;
   height: 100%;
   background-color: var(--cloudy-grey-overlay);
-  backdrop-filter: blur(10px); /* Gaussian blur effect */
+  backdrop-filter: blur(10px);
 }
 
 .redacted {
-  filter:blur(5px); 
+  filter: blur(5px); 
   pointer-events: none;
 }
 
-.hover {
-}
 .hover:hover {
- text-decoration: underline;
- cursor: pointer;   
+  text-decoration: underline;
+  cursor: pointer;   
 }
 
-
-
-
-
-
-
-
-
-/*----------------------------------------------------------------------------------------TEXT BOX CLASSES
+/*------------------------------------------------------------------------------
+  TEXT BOX CLASSES
 */
 
 .text-box {
@@ -306,89 +280,90 @@ s { /* STRIKETHROUGH STYLING */
 }
 
 .nightMode .text-box {
- background-color: var(--background-colour-LightGrey);
+  background-color: var(--background-colour-LightGrey);
 }
 
 .extra {
- color: var(--fit-text-darkblue);
- font-size: var(--size-nerf);
+  color: var(--fit-text-darkblue);
+  font-size: var(--size-nerf);
 }
 
-.nightMode .extra{
- color: var(--mini-grey);
+.nightMode .extra {
+  color: var(--mini-grey);
 }
 
-.extra:empty{
- display: none;
+.extra:empty {
+  display: none;
 }
 
 .ref {
- color: var(--grey-out);
- font-size: var(--small-body-text-size);
- text-shadow:
- -1px -1px 0 var(--fit-cards),
- 0   -1px 0 var(--fit-cards),
- 1px -1px 0 var(--fit-cards),
- 1px  0   0 var(--fit-cards),
- 1px  1px 0 var(--fit-cards),
- 0    1px 0 var(--fit-cards),
- -1px  1px 0 var(--fit-cards),
- -1px  0   0 var(--fit-cards);
+  color: var(--grey-out);
+  font-size: var(--small-body-text-size);
+  text-shadow:
+    -1px -1px 0 var(--fit-cards),
+    0   -1px 0 var(--fit-cards),
+    1px -1px 0 var(--fit-cards),
+    1px  0   0 var(--fit-cards),
+    1px  1px 0 var(--fit-cards),
+    0    1px 0 var(--fit-cards),
+    -1px  1px 0 var(--fit-cards),
+    -1px  0   0 var(--fit-cards);
 }
 
 .nightMode .ref {
- color: var(--background-colour-DarkGrey);
- text-shadow:
- -1px -1px 0 var(--background-colour-LightGrey),
- 0   -1px 0 var(--background-colour-LightGrey),
- 1px -1px 0 var(--background-colour-LightGrey),
- 1px  0   0 var(--background-colour-LightGrey),
- 1px  1px 0 var(--background-colour-LightGrey),
- 0    1px 0 var(--background-colour-LightGrey),
- -1px  1px 0 var(--background-colour-LightGrey),
- -1px  0   0 var(--background-colour-LightGrey);
+  color: var(--background-colour-DarkGrey);
+  text-shadow:
+    -1px -1px 0 var(--background-colour-LightGrey),
+    0   -1px 0 var(--background-colour-LightGrey),
+    1px -1px 0 var(--background-colour-LightGrey),
+    1px  0   0 var(--background-colour-LightGrey),
+    1px  1px 0 var(--background-colour-LightGrey),
+    0    1px 0 var(--background-colour-LightGrey),
+    -1px  1px 0 var(--background-colour-LightGrey),
+    -1px  0   0 var(--background-colour-LightGrey);
 }
 
 .ref:empty {
- display: none;
+  display: none;
 }
 
 .cit {
- color: var(--grey-out);
- font-size: var(--small-body-text-size);
- text-align: right;
- font-style: italic;
- list-style-type: "- ";
+  color: var(--grey-out);
+  font-size: var(--small-body-text-size);
+  text-align: right;
+  font-style: italic;
+  list-style-type: "- ";
 }
 
 .PBL {
-  font-size:var(--size-buff);
-  color:var(--grey-out);
+  color: var(--grey-out);
 }
 
 .fuzzbox {
- text-align: center; 
- width: 90vw; 
- position: absolute; 
- top: 50%; 
- left: 50%; 
- transform: 
- translate(-50%, -50%); 
- text-shadow: -1px 0 #2c2c2c, 0 1px #2c2c2c, 1px 0 #2c2c2c, 0 -1px #2c2c2c;">
+  text-align: center; 
+  width: 90vw; 
+  position: absolute; 
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%); 
+  text-shadow: -1px 0 #2c2c2c, 0 1px #2c2c2c, 1px 0 #2c2c2c, 0 -1px #2c2c2c;
 }
+
+/*------------------------------------------------------------------------------
+  FLEXBOX LAYOUTS
+*/
 
 .flexbox {
   display: flex;
 }
 
 .mobile .flexbox {
-  display: block; /* Change to block for mobile */
+  display: block;
 }
 
 .flex-child {
-  flex: 3 1; /* Adjust flex property */
+  flex: 3 1;
 }
-
 
 .flex-child img {
   height: auto;
@@ -403,10 +378,10 @@ s { /* STRIKETHROUGH STYLING */
   font-size: var(--small-body-text-size);
   flex: 2 1;
   text-align: left;
-  overflow: auto; /* or overflow: scroll; */
+  overflow: auto;
 }
 
-.strike-that{
+.strike-that {
   font-size: var(--size-nerf);
   color: var(--mini-grey);
   text-decoration: none;
@@ -432,8 +407,10 @@ s { /* STRIKETHROUGH STYLING */
   flex: 3;
 }
 
-/*----------------------------------------------------------------------------------------CLICKABLE TAGS 
+/*------------------------------------------------------------------------------
+  CLICKABLE TAGS 
 */
+
 .prettify-tags {
   font-family: var(--font);
   display: flex;
@@ -442,6 +419,7 @@ s { /* STRIKETHROUGH STYLING */
   margin-top: var(--spacer);
   pointer-events: inherit;
 }
+
 .mobile .prettify-tags {
   margin: 1em;
 }
@@ -459,75 +437,203 @@ s { /* STRIKETHROUGH STYLING */
 }
 
 .nightMode .prettify-tag {
-  border-radius: 0.25em;
-  display: inline;
-  margin: 0 0.5em 0.5em 0;
-  padding: 0.25em;
-  transition: all 0.25s;
-  word-break: break-word;
   border: 1px solid var(--background-colour-DarkGrey);
-  font-family: var(--font);
   color: var(--background-colour-DarkGrey);
 }
 
 .prettify-tag:hover {
-  border: 1px solid transparent;
   color: #ffffff;
   border: 1px solid #ffffff;
   cursor: pointer;
 }
 
 .heading-tags {
- font-weight: bold;
- font-family: var(--font);
- color: var(--background-colour-LightGrey); 
- font-size: var(--small-body-text-size);
- word-break: break-word; 
+  font-weight: bold;
+  font-family: var(--font);
+  color: var(--background-colour-LightGrey); 
+  font-size: var(--small-body-text-size);
+  word-break: break-word; 
 }
 
 .heading-tag {
- all: initial;
- font-family: var(--font);
- display: inline;
- font-weight: bold;
- color: var(--background-colour-LightGrey); 
- font-size: var(--small-body-text-size);
- word-break: break-word;
+  all: initial;
+  font-family: var(--font);
+  display: inline;
+  font-weight: bold;
+  color: var(--background-colour-LightGrey); 
+  font-size: var(--small-body-text-size);
+  word-break: break-word;
 }
+
 .heading-tag:hover {
- color: #ffffff;
- cursor: pointer;
+  color: #ffffff;
+  cursor: pointer;
 }
 
-
-/*----------------------------------------------------------------------------------------ABBREVIATIONS FIX FOR MOBILE
+/*------------------------------------------------------------------------------
+  ABBREVIATIONS FIX FOR MOBILE
 */
-abbr[title]:after
-{
- content: " (" attr(title) ")";
- }
 
- @media screen and (min-width: 1025px)
- {
-   abbr[title]
-   {
-    cursor:help;
+abbr[title]:after {
+  content: " (" attr(title) ")";
+}
+
+@media screen and (min-width: 1025px) {
+  abbr[title] {
+    cursor: help;
   }
 
-  abbr[title]:after
-  {
+  abbr[title]:after {
     content: "";
   }
 }
 
+/*------------------------------------------------------------------------------
+  MULTI-QA CARD STYLES
+*/
 
+.qa-pair {
+  margin: 15px 0;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--background-colour-LightestGrey);
+}
 
+.nightMode .qa-pair {
+  border-bottom: 1px solid var(--background-colour-MidGrey);
+}
 
+.qa-pair:last-child {
+  border-bottom: none;
+}
 
+.question-box {
+  margin-bottom: 10px;
+}
 
+.answer-box {
+  background-color: var(--fit-cards);
+  padding: var(--padding);
+  border-radius: var(--corner-radius);
+  margin: 10px 0;
+  border-left: 3px solid var(--heading-colour);
+}
 
+.nightMode .answer-box {
+  background-color: var(--background-colour-DarkGrey);
+  border-left: 3px solid var(--heading-colour);
+}
 
-/*-------------------------------------------------- STOLEN CODE TO PLAY WITH 
+.hidden {
+  display: none;
+}
+
+.reveal-btn {
+  background-color: var(--heading-colour);
+  color: var(--fit-background);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--corner-radius);
+  cursor: pointer;
+  font-size: var(--normal-body-text-size);
+  font-family: var(--font);
+  margin: 10px 0;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+.reveal-btn:hover {
+  background-color: var(--fit-text-lightblue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.reveal-btn:active {
+  transform: translateY(0);
+}
+
+.nightMode .reveal-btn {
+  background-color: var(--heading-colour);
+  color: var(--background-colour-DarkGrey);
+}
+
+.nightMode .reveal-btn:hover {
+  background-color: var(--background-colour-LightestGrey);
+  color: var(--heading-colour);
+}
+
+/*------------------------------------------------------------------------------
+  SPECIAL EFFECTS
+*/
+
+/* Pulsating effect with shadow */
+.pulsating-text-shadow {
+  animation: pulseTextAndShadow 2.75s infinite ease-in-out;
+}
+
+@keyframes pulseTextAndShadow {
+  0% {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  }
+  50% {
+    text-shadow: var(--one-lightbulb-shadow);
+  }
+  100% {
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+  }
+}
+
+/* NightMode version of animation */
+@keyframes pulseTextAndShadowNM {
+  0% {
+    text-shadow: 0px 0px 0px transparent;
+  }
+  50% {
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 1);
+  }
+  100% {
+    text-shadow: 0px 0px 0px transparent;
+  }
+}
+
+/* Following the cursor animation */ 
+.text-follow-cursor {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+}
+
+.text-follow-cursor:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Neon button style */
+#Neon2 {
+  padding: 5px 20px;
+  border: 1px solid #20A11C;
+  border-radius: 5px;
+  background: #20A11C;
+  transition: 0.5s;
+  color: black;
+  text-shadow: none;
+  box-shadow: 0 2px 10px 0;
+}
+
+#Neon2:hover {
+  background: none;
+  border-radius: 5px;
+  color: #33FF2D;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+/*------------------------------------------------------------------------------
+  UNUSED CODE - SAVED FOR LATER
+*/
 
 /* Prettify cardstyling */
 .prettify-flashcard {
@@ -549,8 +655,8 @@ abbr[title]:after
   background-color: var(--text-bg-selected);
 }
 
-$.card {
-  /* Light theme */
+/* Alternative card themes */
+.card-light-theme {
   background-color: #2c2c2c;
   --text-fg: #434c5e;
   --text-fg-faint: #4c566a;
@@ -576,8 +682,7 @@ $.card {
   --underline-fg: #a3be8c;
 }
 
-$.card.night-mode {
-  /* Dark theme */
+.card-dark-theme {
   background-color: #2c2c2c;
   --text-fg: #e7e9f0;
   --text-fg-faint: #d8dee9;
@@ -602,84 +707,3 @@ $.card.night-mode {
   --bold-italic-fg: #d08770;
   --underline-fg: #a3be8c;
 }
-
-*/
-
-
-/* 
-▓▓▓▓▓▓▓▓▓▓SPECIAL EFFECTS BIT▓▓▓▓▓▓▓▓▓▓ 
-*/
-
-/* Pulsating effect with shadow*/
-.pulsating-text-shadow {
-  animation: pulseTextAndShadow 2.75s infinite ease-in-out;
-}
-
-.pulsating-text-shadow .nightMode {
-  animation: pulseTextAndShadow 2.75s infinite ease-in-out;
-}
-
-
-/* Pulsating animation for text and shadow */
-@keyframes pulseTextAndShadow {
-  0% {
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
-  }
-  50% {
-    text-shadow: var(--one-lightbulb-shadow); /* Larger shadow properties */
-  }
-  100% {
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 1); /* Return to initial shadow properties */
-  }
-}
-
-/* NightMode Version of animation*/
-@keyframes pulseTextAndShadowNM {
-  0% {
-    text-shadow: 0px 0px 0px transparent;
-  }
-  50% {
-    text-shadow: 2px 2px 2px rgba(255, 255, 255, 1); /* Larger shadow properties */
-  }
-  100% {
-    text-shadow: 0px 0px 0px transparent; /* Return to initial shadow properties */
-  }
-}
-
-/* Following the cursor animation*/ 
-.text-follow-cursor {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  transition: transform 0.2s ease; /* Add smooth transition for movement */
-}
-
-.text-follow-cursor:hover {
-  transform: translate(-50%, -50%) scale(1.1); /* Adjust the scale to control the bump effect */
-}
-
-
-/* Pinched the Neon2 button css from Advanced Review and Bottom Bar addon*/ 
-#Neon2 {
-  padding: 5px 20px;
-  border: 1px solid #20A11C;
-  border-radius: 5px;
-  background: #20A11C;
-  transition: 0.5s;
-  color: black;
-  text-shadow: none;
-  box-shadow: 0 2px 10px 0;
-}
-
-#Neon2:hover {
-  background: none;
-  border-radius: 5px;
-  color: #33FF2D;
-  text-shadow: none;
-  box-shadow: none;
-}
-
-
-*/ Add more using excel: ="{{#c"&B1&"}}" in the A column, numbers in the B column, ="{{/c"&B1&"}}" in the C column. Drag all 3 down as far as you need. Copy and paste, it'll be text not the formula. */
-
